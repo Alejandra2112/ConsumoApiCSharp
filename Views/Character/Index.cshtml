@@ -1,0 +1,48 @@
+﻿@model List<Character>
+@using ConsumoApi.Models;
+
+@{
+    ViewData["Title"] = "Character List";
+}
+
+<h1>Rick and Morty</h1>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table style="border-collapse: collapse; width: 100%; box-shadow: 0 0 60px rgba(255, 0, 220, 0.3); border-radius: 20px;">
+        <thead>
+            <tr>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">ID</th>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">Name</th>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">Status</th>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">Species</th>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">Gender</th>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">Origin</th>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">Location</th>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">Image</th>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var character in Model)
+            {
+                <tr>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;">@character.Id</td>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;">@character.Name</td>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3);; padding: 8px;">@character.Status</td>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;">@character.Species</td>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;">@character.Gender</td>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;">@character.Origin.Name</td>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;">@character.Location.Name</td>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;"><img src="@character.Image" alt="Character Image" width="100"></td>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;"><a href="@character.Url" target="_blank">@character.Url</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+else
+{
+    <p>No characters found.</p>
+}

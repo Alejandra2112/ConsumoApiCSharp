@@ -1,0 +1,45 @@
+﻿@model List<Homero>
+@using ConsumoApi.Models;
+
+@{
+    ViewData["Title"] = "Homero List";
+}
+
+<h1>The Simpsons</h1>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table style="border-collapse: collapse; width: 100%; box-shadow: 0 0 60px rgba(255, 0, 220, 0.3); border-radius: 20px;">
+        <thead>
+            <tr>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">Número</th>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">Nombre</th>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">Imagen</th>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">Historia</th>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">Estado</th>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">Ocupación</th>
+                <th style="color: white; border: 1px solid rgba(255, 0, 220, 0.3); background-color:#E69DFB; padding: 8px;">Genero</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                var homero = Model[i];
+                <tr>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;">@(i + 1)</td>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;">@homero.Nombre</td>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;"><img src="@homero.Imagen" alt="Homero Imagen" width="100"></td>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;">@homero.Historia</td>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;">@homero.Estado</td>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;">@homero.Ocupacion</td>
+                    <td style="border: 1px solid rgba(255, 0, 220, 0.3); padding: 8px;">@homero.Genero</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No characters found.</p>
+}
